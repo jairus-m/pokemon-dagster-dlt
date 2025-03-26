@@ -1,0 +1,30 @@
+[project]
+name = "dagster_dlt"
+requires-python = ">=3.9,<3.13"
+version = "0.1.0"
+dependencies = [
+    "dagster-components",
+]
+
+[project.entry-points]
+"dagster_dg.library" = { dagster_dlt = "dagster_dlt.lib"}
+
+[dependency-groups]
+dev = [
+    "dagster-webserver",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.dg]
+directory_type = "project"
+
+[tool.dg.project]
+root_module = "dagster_dlt"
+
+[tool.setuptools.packages.find]
+exclude=["dagster_dlt_tests"]
+
+
