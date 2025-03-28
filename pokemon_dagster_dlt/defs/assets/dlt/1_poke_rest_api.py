@@ -40,7 +40,7 @@ from dlt.sources.rest_api import rest_api_source
 )
 def load_pokemon():
     pipeline = dlt.pipeline(
-        pipeline_name="example_1",
+        pipeline_name="rest_api_pokemon",
         destination="duckdb",
         dataset_name="poke_rest_api_1",
     )

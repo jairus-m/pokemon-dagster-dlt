@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.9, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12'",
@@ -137,7 +138,7 @@ name = "click"
 version = "8.1.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "platform_system == 'Windows'" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz", hash = "sha256:ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a", size = 226593 }
 wheels = [
@@ -183,11 +184,11 @@ dependencies = [
     { name = "jinja2" },
     { name = "packaging" },
     { name = "protobuf" },
-    { name = "psutil", marker = "platform_system == 'Windows'" },
+    { name = "psutil", marker = "sys_platform == 'win32'" },
     { name = "pydantic" },
     { name = "python-dotenv" },
     { name = "pytz" },
-    { name = "pywin32", marker = "platform_system == 'Windows'" },
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
     { name = "pyyaml" },
     { name = "requests" },
     { name = "rich" },
@@ -200,7 +201,7 @@ dependencies = [
     { name = "toposort" },
     { name = "tqdm" },
     { name = "typing-extensions" },
-    { name = "tzdata", marker = "platform_system == 'Windows'" },
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
     { name = "universal-pathlib" },
     { name = "watchdog" },
 ]
@@ -221,29 +222,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/ed/17/46d2351136c44a216
 wheels = [
     { url = "https://files.pythonhosted.org/packages/47/05/afcf1411b06475942d5026ae6f62af0f2b0d2387ce56c804ca45f9da562f/dagster_components-0.26.6.post0-py3-none-any.whl", hash = "sha256:f33572c66ce4017ebd8afc1fdfbcb4bda5a91aacb60deb43cecf27d9aae12e96", size = 52219 },
 ]
-
-[[package]]
-name = "dagster-dlt"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "dagster-components" },
-    { name = "dlt", extra = ["duckdb"] },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "dagster-webserver" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "dagster-components" },
-    { name = "dlt", extras = ["duckdb"], specifier = ">=1.9.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [{ name = "dagster-webserver" }]
 
 [[package]]
 name = "dagster-graphql"
@@ -1044,6 +1022,29 @@ wheels = [
 ]
 
 [[package]]
+name = "pokemon-dagster-dlt"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "dagster-components" },
+    { name = "dlt", extra = ["duckdb"] },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "dagster-webserver" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "dagster-components" },
+    { name = "dlt", extras = ["duckdb"], specifier = ">=1.9.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "dagster-webserver" }]
+
+[[package]]
 name = "propcache"
 version = "0.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1734,7 +1735,7 @@ name = "tqdm"
 version = "4.67.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "platform_system == 'Windows'" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737 }
 wheels = [
