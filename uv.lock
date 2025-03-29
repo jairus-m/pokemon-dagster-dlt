@@ -224,6 +224,19 @@ wheels = [
 ]
 
 [[package]]
+name = "dagster-dlt"
+version = "0.26.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dagster" },
+    { name = "dlt" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/21/0e/a3c0795306b5c1dcf177d45ea7ccdc387ff2b9f09b725b8c352bf028f5d7/dagster-dlt-0.26.6.tar.gz", hash = "sha256:70bcb9d93b7873d818990f9e9357aa85e6dc0e8514a9ddd1f116afc89269e319", size = 13555 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/74/84/57e4aa7ec91b564429feab57fe47f57a6ceca0bfe75cf63d5dfbeb45029c/dagster_dlt-0.26.6-py3-none-any.whl", hash = "sha256:5b0ad87ea2a860c78d14cf995ffe9ab52bcaf8bc7cd039ae273f5ce4875a35d4", size = 14965 },
+]
+
+[[package]]
 name = "dagster-graphql"
 version = "1.10.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1027,6 +1040,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "dagster-components" },
+    { name = "dagster-dlt" },
     { name = "dlt", extra = ["duckdb"] },
 ]
 
@@ -1038,6 +1052,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "dagster-components" },
+    { name = "dagster-dlt", specifier = ">=0.26.6" },
     { name = "dlt", extras = ["duckdb"], specifier = ">=1.9.0" },
 ]
 
