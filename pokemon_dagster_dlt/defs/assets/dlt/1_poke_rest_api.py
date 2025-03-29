@@ -15,22 +15,22 @@ from dlt.sources.rest_api import rest_api_source
     outs={
         "pokemon": dg.AssetOut(
             key=[ # asset key becomes the table name in target DB
-                "poke_api",
-                "pokemon",
+                "poke_api_1",
+                "pokemon_1",
             ],  
             description="General Pokemon data", # description associated with asset, viewable in Dagster UI
         ),
         "berry": dg.AssetOut(
             key=[
-                "poke_api",
-                "berry",
+                "poke_api_1",
+                "berry_1",
             ],
             description="Berry data which provide HP and status condition restoration, stat enhancement, and even damage negation when eaten by Pokémon",
         ),
         "location": dg.AssetOut(
             key=[
-                "poke_api",
-                "location",
+                "poke_api_1",
+                "location_1",
             ],
             description="Locations that exist within Pokemon games",
         ),
@@ -38,7 +38,7 @@ from dlt.sources.rest_api import rest_api_source
     group_name="dltHub__github_1",
     compute_kind="dlt",
 )
-def load_pokemon():
+def load_pokemon_1():
     pipeline = dlt.pipeline(
         pipeline_name="rest_api_pokemon",
         destination="duckdb",
