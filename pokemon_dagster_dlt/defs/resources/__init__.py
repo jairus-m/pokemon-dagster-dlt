@@ -1,3 +1,4 @@
+import dagster as dg
 from dagster_dlt import DagsterDltResource
 
-dlt_resource = DagsterDltResource()
+defs = dg.Definitions(resources={"dlt": DagsterDltResource()})
