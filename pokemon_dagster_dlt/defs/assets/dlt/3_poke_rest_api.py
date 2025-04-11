@@ -82,7 +82,7 @@ def pokeapi_source():
 )
 def load_pokemon_data_3():
     pipeline = dlt.pipeline(
-        pipeline_name="rest_api_pokemon_3",
+        pipeline_name="rest_api_pokemon_3", # .duckdb file named after pipeline
         destination="duckdb",
     )
     load_info = pipeline.run(pokeapi_source(), dataset_name="poke_rest_api_3", write_disposition='replace',)
