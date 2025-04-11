@@ -44,7 +44,7 @@ class CustomDagsterDltTranslator(DagsterDltTranslator):
         dataset_name="poke_rest_api_2",
         destination="duckdb",
     ),
-    group_name="dltHub__github_2",
+    group_name="dltHub__poke_2",
     dagster_dlt_translator=CustomDagsterDltTranslator(),
 )
 
