@@ -40,11 +40,11 @@ class CustomDagsterDltTranslator(DagsterDltTranslator):
 @dlt_assets(
     dlt_source=pokemon_source,
     dlt_pipeline=dlt.pipeline(
-        pipeline_name="example_2",
+        pipeline_name="rest_api_pokemon_2", # .duckdb file named after pipeline
         dataset_name="poke_rest_api_2",
         destination="duckdb",
     ),
-    group_name="dltHub__github_2",
+    group_name="dltHub__poke_2",
     dagster_dlt_translator=CustomDagsterDltTranslator(),
 )
 

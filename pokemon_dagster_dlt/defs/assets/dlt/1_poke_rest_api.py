@@ -35,12 +35,12 @@ from dlt.sources.rest_api import rest_api_source
             description="Locations that exist within Pokemon games",
         ),
     },
-    group_name="dltHub__github_1",
+    group_name="dltHub__poke_1",
     compute_kind="dlt",
 )
 def load_pokemon_1():
     pipeline = dlt.pipeline(
-        pipeline_name="rest_api_pokemon",
+        pipeline_name="rest_api_pokemon_1", # .duckdb file named after pipeline
         destination="duckdb",
         dataset_name="poke_rest_api_1",
     )
