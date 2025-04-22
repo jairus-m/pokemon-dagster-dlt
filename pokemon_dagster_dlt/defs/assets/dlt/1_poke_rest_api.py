@@ -5,12 +5,19 @@ to materialize multiple assets from three different endpoints of the PokeAPI RES
 The example is adapted from dltHub's REST API Source tutorial:
 https://dlthub.com/docs/tutorial/rest-api
 
-Key features:
+Core approach:
 - Uses Dagster's @multi_asset decorator to define a single asset function that materializes three distinct assets
   (pokemon, berry, location) from a single dlt pipeline run.
 - Each asset corresponds to a specific endpoint/resource in the PokeAPI.
 - Asset metadata (keys, descriptions) is configured for visibility in the Dagster UI.
 - Data is loaded into a DuckDB database using dlt.
+
+Architecture: 
+- Lightweight Dagster wrapper around dlt's REST API source
+Control Level: 
+- Medium (pipeline config exposed, resources hidden)
+  - dlt: EL is heavily declarative
+  - Dagster: Metadata/Dependencies are explicitly configured
 
 Note: Adding extra comments for instruction/demo purposes.
 """
@@ -20,13 +27,13 @@ import dlt
 from dlt.sources.rest_api import rest_api_source
 
 @dg.multi_asset(
-    outs={
+    outs={  # Define Dagster asset definitions/metadata for the 3 dlt Assets
         "pokemon": dg.AssetOut(
             key=[
-                "poke_api_1",
-                "pokemon_1",
+                "poke_api_1", # Asset key prefix
+                "pokemon_1",  # Asset key name
             ],
-            description="General Pokemon data retrieved from the PokeAPI /pokemon endpoint.",
+            description="General Pokemon data retrieved from the PokeAPI /pokemon endpoint.", # Asset description
         ),
         "berry": dg.AssetOut(
             key=[
@@ -34,9 +41,8 @@ from dlt.sources.rest_api import rest_api_source
                 "berry_1",
             ],
             description=(
-                "Berry data from the PokeAPI /berry endpoint. "
-                "Berries provide HP and status condition restoration, stat enhancement, "
-                "and damage negation when eaten by Pokémon."
+                "Berry characteristics from /berry endpoint including growth time, size, "
+                "and cultivation properties. Affects Pokemon stats when consumed."
             ),
         ),
         "location": dg.AssetOut(
@@ -44,10 +50,10 @@ from dlt.sources.rest_api import rest_api_source
                 "poke_api_1",
                 "location_1",
             ],
-            description="Location data from the PokeAPI /location endpoint, representing in-game locations.",
+            description="In-game locations from /location endpoint with regional data and game appearances",
         ),
     },
-    group_name="dltHub__poke_1",
+    group_name="dltHub__poke_1",  # Asset group name in Dagster UI
     compute_kind="dlt",
 )
 def load_pokemon_1():

@@ -2,14 +2,21 @@
 This example demonstrates a modular approach to using dlt with Dagster, explicitly defining
 individual dlt resources and combining them into a source, then materializing them as Dagster assets.
 
-Key differences from Example 1:
+Core approach:
 - Uses dlt's @resource and @source decorators for explicit pipeline construction
 - Implements custom API calls with requests library instead of dlt's REST API source
 - Demonstrates write_disposition configuration for pipeline runs
 - Shows manual resource aggregation into a dlt source
 
-Typical use case: When you need fine-grained control over individual API endpoints or want to combine
-disparate data sources into a single pipeline.
+Architecture: 
+- Hybrid manual implementation
+Control Level: 
+- High (custom code in @dlt.resource)
+  - dlt: 
+    - EL using @dlt.resource and @dlt.source allows for more control over EL
+    - Code is less declarative and easier to customize
+  - Dagster: 
+    - Metadata/Dependencies are explicitly configured
 
 Note: Adding extra comments for instruction/demo purposes.
 """
@@ -85,10 +92,10 @@ def pokeapi_source():
     ]
 
 @dg.multi_asset(
-    outs={
+    outs={  # Define Dagster asset definitions/metadata for the 3 dlt Assets
         "pokemon": dg.AssetOut(
-            key=["poke_api_3", "pokemon_3"],
-            description="Basic Pokemon metadata from /pokemon endpoint including names and URLs",
+            key=["poke_api_3", "pokemon_3"], # Asset key prefix and name
+            description="General Pokemon data retrieved from the PokeAPI /pokemon endpoint.", # Asset key description
         ),
         "berry": dg.AssetOut(
             key=["poke_api_3", "berry_3"],
@@ -102,7 +109,7 @@ def pokeapi_source():
             description="In-game locations from /location endpoint with regional data and game appearances",
         ),
     },
-    group_name="dltHub__poke_3",
+    group_name="dltHub__poke_3", # Asset group name in Dagster UI
     compute_kind="dlt",
 )
 def load_pokemon_data_3():
