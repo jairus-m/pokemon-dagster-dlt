@@ -44,8 +44,8 @@
 1. Easy to scafold and organize your Dagster project
 2. Python venv management with `dg` is integrated with `uv` out of the box
 3. Automatic definitions discovery
-  - As soon as you create an asset definition, it will be recognized without manual import into a top-level `dg.Definitions` object
+    - As soon as you create an asset definition, it will be recognized without manual import into a top-level `dg.Definitions` object
 4. CLI-first development that makes developing more streamlined and fun!
-  - `list`, `check`, `launch`, etc
+    - `list`, `check`, `launch`, etc
 5. Component framework and YML integration for building low/medium code, declarative pipelines 
-  - Lowers the technical bar for contributors to a Dagster project
+    - Lowers the technical bar for contributors to a Dagster project
