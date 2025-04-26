@@ -19,7 +19,9 @@ Control Level:
   - dlt: EL is heavily declarative
   - Dagster: Metadata/Dependencies are explicitly configured
 
-Note: Adding extra comments for instruction/demo purposes.
+Note: 
+  - Adding extra comments for instruction/demo purposes.
+  - The `.duckdb` file will be created in the current working directory as `rest_api_pokemon_1.duckdb`
 """
 
 import dagster as dg
