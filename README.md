@@ -49,3 +49,16 @@
   - `list`, `check`, `launch`, etc
 5. Component framework and YML integration for building low/medium code, declarative pipelines 
   - Lowers the technical bar for contributors to a Dagster project
+
+  # Using dlt + Dagster
+  - `defs/assets/dlt/` contains three example Python files
+      - `1_poke_rest_api.py` 
+      - `2_poke_rest_api.py`
+      - `3_poke_rest_api.py` 
+  - `defs/assets/dlt/README.md` contains documentation that outlines three integration patterns for materializing multi-assets from multiple endpoints of a single REST API source
+  
+  NOTE: Each pipelines creates a corresponding `rest_api_pokemon_<n>.duckdb` file. To inspect these with the DuckDB UI:
+  1. Run `duckdb --ui`
+  2. In the UI, hit the "+" icon next to "Attatched databses"
+  3. Add the PATH to the `.duckdb` file relative to your current working directory (i.e `rest_api_pokemon_<n>.duckdb`)
+  4. Run your queries!
