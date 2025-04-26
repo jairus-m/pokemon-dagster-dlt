@@ -21,7 +21,9 @@ References:
 - Dagster dlt integration docs: https://docs.dagster.io/integrations/libraries/dlt
 - dltHub REST API source tutorial: https://dlthub.com/docs/tutorial/rest-api
 
-Note: Adding extra comments for instruction/demo purposes.
+Note: 
+  - Adding extra comments for instruction/demo purposes.
+  - The `.duckdb` file will be created in the current working directory as `rest_api_pokemon_2.duckdb`
 """
 
 import dagster as dg
