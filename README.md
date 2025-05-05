@@ -8,11 +8,13 @@
 
 ### Prerequisites 
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) (`>=0.6.7`)
-2. Install the experimental preview of [dg](https://docs.dagster.io/guides/labs/dg/) (`>=0.26.6`)
+2. Install the experimental preview of [dg](https://docs.dagster.io/guides/labs/dg/) (`==0.26.8`)
 3. Install [DuckDB](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=package_manager) `(>= 1.2.1)`
-4. Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) for running Dagster's local documentation site `(>=1.22.22)`
+4. Install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) for running Dagster's local documentation site `(==1.22.22)`
 
-**Note:** To launch the DuckDB Local UI: Run `duckdb -ui` in your terminal
+**Note:** 
+- To launch the DuckDB Local UI: Run `duckdb -ui` in your terminal
+- `dg` is in beta; therefore, for the best results, install the same version I pinned above and utilize the pinned dependencies in the `pyproject.toml`
 
 # Getting started  
 1. Clone the repo locally

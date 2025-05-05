@@ -114,7 +114,7 @@ def pokeapi_source():
     group_name="dltHub__poke_3", # Asset group name in Dagster UI
     compute_kind="dlt",
 )
-def load_pokemon_data_3():
+def load_pokemon_3():
     """
     Executes the dlt pipeline with custom-defined resources and materializes Dagster assets.
     

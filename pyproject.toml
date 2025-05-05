@@ -3,13 +3,13 @@ name = "pokemon_dagster_dlt"
 requires-python = ">=3.9,<3.13"
 version = "0.1.0"
 dependencies = [
-    "dagster-components",
-    "dagster-dlt>=0.26.6",
-    "dlt[duckdb]>=1.9.0",
+    "dagster-components==0.26.8",
+    "dagster-dlt==0.26.8",
+    "dlt[duckdb]==1.10.0",
 ]
 
 [project.entry-points]
-"dagster_dg.library" = { dagster_dlt = "pokemon_dagster_dlt.lib"}
+"dagster_dg.plugin" = { dagster_dlt = "src.lib"}
 
 [dependency-groups]
 dev = [
@@ -24,9 +24,9 @@ build-backend = "setuptools.build_meta"
 directory_type = "project"
 
 [tool.dg.project]
-root_module = "pokemon_dagster_dlt"
+root_module = "src"
 
 [tool.setuptools.packages.find]
-exclude=["pokemon_dagster_dlt_tests"]
+exclude=["tests"]
 
 
