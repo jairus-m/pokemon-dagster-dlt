@@ -1,0 +1,4 @@
+# This directory will house the .duckdb files
+# Note that each pipeline gets its own rest_api_pokemon_3.duckdb file
+# This is purely due to concurrency limits of write operations
+# in DuckDB
