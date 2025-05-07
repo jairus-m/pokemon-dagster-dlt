@@ -27,6 +27,7 @@ Note:
 import dagster as dg
 import dlt
 from dlt.sources.rest_api import rest_api_source
+from src.defs.utils import DUCKDB_PATH # could be an environment variable or config parameter
 
 @dg.multi_asset(
     outs={  # Define Dagster asset definitions/metadata for the 3 dlt Assets
@@ -74,8 +75,8 @@ def load_pokemon_1():
 
     # Initialize the dlt pipeline with DuckDB as the destination.
     pipeline = dlt.pipeline(
-        pipeline_name="rest_api_pokemon_1",  # Output database file will be rest_api_pokemon_1.duckdb
-        destination="duckdb",
+        pipeline_name="rest_api_pokemon_1",
+        destination=dlt.destinations.duckdb(DUCKDB_PATH + "rest_api_pokemon_1.duckdb"),  # Path to the DuckDB database file
         dataset_name="poke_rest_api_1",      # Logical dataset name within the DuckDB database
     )
 

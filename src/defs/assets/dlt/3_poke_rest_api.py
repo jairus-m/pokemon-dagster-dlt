@@ -26,6 +26,7 @@ Note:
 import dagster as dg
 import dlt
 import requests
+from src.defs.utils import DUCKDB_PATH # could be an environment variable or config parameter
 
 @dlt.resource
 def pokemon_resource():
@@ -128,8 +129,8 @@ def load_pokemon_3():
     """
     # Initialize pipeline
     pipeline = dlt.pipeline(
-        pipeline_name="rest_api_pokemon_3",  # Output file: rest_api_pokemon_3.duckdb
-        destination="duckdb",
+        pipeline_name="rest_api_pokemon_3",
+        destination=dlt.destinations.duckdb(DUCKDB_PATH + "rest_api_pokemon_3.duckdb"),  
     )
 
     # Run pipeline with explicit dataset name and write disposition
