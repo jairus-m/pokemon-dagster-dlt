@@ -33,6 +33,7 @@ from dagster_dlt import DagsterDltResource, DagsterDltTranslator, dlt_assets
 from dagster_dlt.translator import DltResourceTranslatorData
 from dlt.sources.rest_api import rest_api_source
 from collections.abc import Iterable
+from src.defs.utils import DUCKDB_PATH # could be an environment variable or config parameter
 
 # Define the dlt source for the PokeAPI.
 # This configuration specifies the base URL, default parameters (limit=1000), and the resources to extract.
@@ -88,9 +89,9 @@ class CustomDagsterDltTranslator(DagsterDltTranslator):
 @dlt_assets(
     dlt_source=pokemon_source,
     dlt_pipeline=dlt.pipeline(
-        pipeline_name="rest_api_pokemon_2",  # Output .duckdb file will be named after this pipeline
+        pipeline_name="rest_api_pokemon_2",  
         dataset_name="poke_rest_api_2",      # Logical dataset name within DuckDB
-        destination="duckdb",
+        destination=dlt.destinations.duckdb(DUCKDB_PATH + "rest_api_pokemon_2.duckdb"),
     ),
     group_name="dltHub__poke_2",             # Asset group name in Dagster UI
     dagster_dlt_translator=CustomDagsterDltTranslator(),  # Use custom asset key translation

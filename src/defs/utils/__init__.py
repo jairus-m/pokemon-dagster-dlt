@@ -1,0 +1,1 @@
+DUCKDB_PATH = "files/"
