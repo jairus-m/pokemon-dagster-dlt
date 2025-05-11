@@ -1,19 +1,20 @@
 """
-This module demonstrates how to use the dlt library within the Dagster framework (without the official integration)
+This file demonstrates how to use the dlt library within the Dagster framework (without the official integration)
 to materialize multiple assets from three different endpoints of the PokeAPI REST API.
 
 The example is adapted from dltHub's REST API Source tutorial:
 https://dlthub.com/docs/tutorial/rest-api
 
 Core approach:
+- dlt EL is declarative, but the Dagster wrapper allows for explicit configuration of metadata and dependencies.
 - Uses Dagster's @multi_asset decorator to define a single asset function that materializes three distinct assets
   (pokemon, berry, location) from a single dlt pipeline run.
 - Each asset corresponds to a specific endpoint/resource in the PokeAPI.
 - Asset metadata (keys, descriptions) is configured for visibility in the Dagster UI.
-- Data is loaded into a DuckDB database using dlt.
+- Data from the 'pokemon', 'berry', and 'location' endpoints is loaded into a DuckDB database.
 
 Architecture: 
-- Lightweight Dagster wrapper around dlt's REST API source
+- Dagster @multi_asset wrapper around dlt's declarative REST API source code
 Control Level: 
 - Medium (pipeline config exposed, resources hidden)
   - dlt: EL is heavily declarative

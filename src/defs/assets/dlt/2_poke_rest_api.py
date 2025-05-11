@@ -1,15 +1,16 @@
 """
-This example demonstrates the use of the official dlt-Dagster integration (`dagster-dlt`)
+This file demonstrates the use of the official dlt-Dagster integration (`dagster-dlt`)
 to materialize multiple assets from three endpoints of the PokeAPI REST API.
 
 Core approach:
-- Leverages the @dlt_assets decorator to automatically generate Dagster assets from a dlt source and pipeline.
-- Need for use of a custom DagsterDltTranslator to control asset key naming and dependencies.
+- Fully declarative and integrated approach
+- Leverages the @dg.dlt_assets decorator to automatically generate Dagster assets from a dlt source and pipeline.
+- Need to use a custom DagsterDltTranslator class to control asset key naming and dependencies.
+- The integration enables streamlined orchestration, monitoring, and management of dlt pipelines within Dagster.
 - Data from the 'pokemon', 'berry', and 'location' endpoints is loaded into a DuckDB database.
-- The integration enables seamless orchestration, monitoring, and management of dlt pipelines within Dagster.
 
 Architecture: 
-- Coupled integration via dagster-dlt
+- Coupled code integration via dagster-dlt
 Control Level: 
 - Low (convention over configuration)
   - dlt: EL is heavily declarative

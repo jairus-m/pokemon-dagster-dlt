@@ -1,15 +1,16 @@
 """
-This example demonstrates a modular approach to using dlt with Dagster, explicitly defining
+This file demonstrates a modular approach to using dlt with Dagster, explicitly defining
 individual dlt resources and combining them into a source, then materializing them as Dagster assets.
 
 Core approach:
-- Uses dlt's @resource and @source decorators for explicit pipeline construction
+- Most control over both the data extraction process and Dagster metadata
+- Uses @dlt.resource and @dlt.source decorators for explicit pipeline construction
 - Implements custom API calls with requests library instead of dlt's REST API source
-- Demonstrates write_disposition configuration for pipeline runs
-- Shows manual resource aggregation into a dlt source
+- Each resource is defined separately, allowing for more granular control over data extraction
+- Data from the 'pokemon', 'berry', and 'location' endpoints is loaded into a DuckDB database.
 
 Architecture: 
-- Hybrid manual implementation
+- Dagster @multi_asset wrapper around dlt's @dlt.resource and @dlt.source decorators
 Control Level: 
 - High (custom code in @dlt.resource)
   - dlt: 
